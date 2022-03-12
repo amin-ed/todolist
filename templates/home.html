@@ -40,9 +40,18 @@
          {{ todo.text }}
          {{ checked }}
         </label>
-      <button id="todo.id" type="submit" class="btn btn-success btn-sm">Submit</button>
-      <button action="{{ url_for('delete', id=todo.id) }}" class="btn btn-outline-danger btn-sm" method="delete">Delete</button>
-        <div>
+        <button id="todo.id" type="submit" class="btn btn-success btn-sm">Submit</button>
+      </form>
+
+      <form action="{{ url_for('delete', id=todo.id) }}" 
+            method="delete">
+        <button 
+            action="{{ url_for('delete', id=todo.id) }}"
+            class="btn btn-outline-danger btn-sm"
+               method="delete">
+            Delete
+          </button>
+      <div>
       {% endif %}
       <br>
       {% endfor %}
@@ -52,12 +61,20 @@
     <h2>complete</h2>
     <div>
       {% for todo in complete %}
-    <div>
-      <del style="font-size: 14pt; color: red; padding-right: 10px">
-        {{ todo.text }}
-      </del>
-      <button action="{{ url_for('delete', id=todo.id) }}" class="btn btn-outline-danger btn-sm" method="delete">Delete</button>
-    </div>
+      <div>
+        <form action="{{ url_for('delete', id=todo.id) }}" 
+              method="delete">
+          <del style="font-size: 14pt; color: red; padding-right: 10px">
+            {{ todo.text }}
+          </del>
+          <button 
+               action="{{ url_for('delete', id=todo.id) }}"
+               class="btn btn-outline-danger btn-sm"
+               method="delete">
+            Delete
+          </button>
+        </form>
+      </div>
       </br>
     {% endfor %}
     </div>
