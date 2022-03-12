@@ -25,11 +25,13 @@
     </form>
       </br>
 
-  <div
-      {% for todo in incomplete %}>
+      <div>
+      {% for todo in incomplete %}
+      {% if todo.text %}
       <form 
         action="{{ url_for('complete', id=todo.id) }}"
         method="get">
+        <div>
       <input type="checkbox"
         id="todo.id" name="todo.id" value="todo.text">
         <label 
@@ -38,9 +40,10 @@
          {{ todo.text }}
          {{ checked }}
         </label>
-      <input
-          class="ml-2"
-      type="submit" value="Submit">
+      <button id="todo.id" type="submit" class="btn btn-success btn-sm">Submit</button>
+      <button action="{{ url_for('delete', id=todo.id) }}" class="btn btn-outline-danger btn-sm" method="delete">Delete</button>
+        <div>
+      {% endif %}
       <br>
       {% endfor %}
     </form>
@@ -49,9 +52,12 @@
     <h2>complete</h2>
     <div>
       {% for todo in complete %}
-      <del style="font-size: 14pt; color: red">
-      {{ todo.text }}
+    <div>
+      <del style="font-size: 14pt; color: red; padding-right: 10px">
+        {{ todo.text }}
       </del>
+      <button action="{{ url_for('delete', id=todo.id) }}" class="btn btn-outline-danger btn-sm" method="delete">Delete</button>
+    </div>
       </br>
     {% endfor %}
     </div>

@@ -50,6 +50,37 @@ def complete(id):
 
     return redirect (url_for('home'))
 
+@app.route('/delete/<id>')
+def delete(id):
+    user = Note.query.get(id)
+    db.session.delete(user)
+    db.session.commit()
+
+    
+    return redirect(url_for('home'))    
+
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
